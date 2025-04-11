@@ -2,6 +2,9 @@
 
 This repository contains a comprehensive collection of indoor image datasets, designed for training object detection models using YOLOv8. The datasets are categorized into **training**, **validation**, and **test** sets and labeled with a wide variety of indoor objects, including furniture, appliances, tools, and animals. The dataset includes 184 different object classes, making it ideal for training and evaluating object detection models.
 
+#Download The File from My Google Drive Link- https://drive.usercontent.google.com/download?id=1XbHp_rq7e53cDcD0Oo-uIKt22pYMtd-4&export=download&authuser=1 
+
+
 ## Table of Contents
 
 - [Overview](#overview)
