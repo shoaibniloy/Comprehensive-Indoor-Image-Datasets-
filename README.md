@@ -1,1 +1,0 @@
-# Comprehensive-Indoor-Image-Datasets-
