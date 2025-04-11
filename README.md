@@ -1,38 +1,32 @@
-Comprehensive Indoor Image Datasets
-This repository contains a comprehensive collection of indoor image datasets, designed for training object detection models using YOLOv8. The datasets are categorized into training, validation, and test sets and labeled with a wide variety of indoor objects, including furniture, appliances, tools, and animals. The dataset includes 184 different object classes, making it ideal for training and evaluating object detection models.
+# Comprehensive Indoor Image Datasets
 
-Table of Contents
-Overview
+This repository contains a comprehensive collection of indoor image datasets, designed for training object detection models using YOLOv8. The datasets are categorized into **training**, **validation**, and **test** sets and labeled with a wide variety of indoor objects, including furniture, appliances, tools, and animals. The dataset includes 184 different object classes, making it ideal for training and evaluating object detection models.
 
-Dataset Structure
+## Table of Contents
 
-Classes
+- [Overview](#overview)
+- [Dataset Structure](#dataset-structure)
+- [Classes](#classes)
+- [Training the Model](#training-the-model)
+- [Resuming Training](#resuming-training)
+- [Downloading Model Checkpoints](#downloading-model-checkpoints)
+- [License](#license)
 
-Training the Model
+## Overview
 
-Resuming Training
+The dataset is structured for training an object detection model with YOLOv8. It contains images and corresponding annotations for 184 indoor object classes, such as furniture, electronics, and various household items. The repository also includes a pre-configured YAML file for YOLOv8, allowing you to train the model on your custom dataset with ease.
 
-Downloading Model Checkpoints
+### Key Features:
+- **184 object classes**: A diverse set of indoor objects, including **guns**, **plants**, **furniture**, **appliances**, **animals**, and more.
+- **Organized dataset**: Split into **train**, **valid**, and **test** directories.
+- **YOLOv8-compatible annotations**: The dataset is ready to be used with YOLOv8 for object detection tasks.
+- **Pre-configured YAML**: Easily set up for training with YOLOv8.
 
-License
+## Dataset Structure
 
-Overview
-The dataset is structured for training an object detection model with YOLOv8. It contains images and corresponding annotations for 184 indoor object classes, such as furniture, electronics, and various household items. The repository also includes a pre-configured YAML file for YOLOv8, making it easy to integrate the dataset into a training pipeline.
-
-Key Features:
-184 object classes: A diverse set of indoor objects, including guns, plants, furniture, appliances, animals, and more.
-
-Organized dataset: Split into train, valid, and test directories.
-
-YOLOv8-compatible annotations: The dataset is ready to be used with YOLOv8 for object detection tasks.
-
-Pre-configured YAML: Easily set up for training with YOLOv8.
-
-Dataset Structure
 The dataset is organized as follows:
 
-bash
-Copy
+```
 /content/dataset/
     ├── train/
     │   ├── images/
@@ -43,66 +37,54 @@ Copy
     └── test/
         ├── images/
         └── labels/
-images/: Contains the images for training, validation, and testing.
+```
 
-labels/: Contains the YOLO annotations corresponding to the images.
+- **images/**: Contains the images for training, validation, and testing.
+- **labels/**: Contains the YOLO annotations corresponding to the images.
 
-Classes
+## Classes
+
 This dataset includes 184 object classes. Some of the object classes are:
 
-gun
+- **gun**
+- **Aggressor**
+- **Person**
+- **Plants**
+- **Power-Tool**
+- **Printer**
+- **Shelve-Storage**
+- **Shoe-Rack**
+- **Side-Table**
+- **Standard-Sofa**
+- **TV-Stand**
+- **cat-Abyssinian**
+- **dog-american_bulldog**
+- **Washing-Machine**
+- **Fridge**
+- **Bed**
+- **Knife**
+- **Toilet**
 
-Aggressor
+For the complete list of object classes, refer to the `data.yaml` file in the repository.
 
-Person
+## Training the Model
 
-Plants
-
-Power-Tool
-
-Printer
-
-Shelve-Storage
-
-Shoe-Rack
-
-Side-Table
-
-Standard-Sofa
-
-TV-Stand
-
-cat-Abyssinian
-
-dog-american_bulldog
-
-Washing-Machine
-
-Fridge
-
-Bed
-
-Knife
-
-Toilet
-
-For the complete list of object classes, refer to the data.yaml file in the repository.
-
-Training the Model
 To train YOLOv8 on your custom dataset, follow these steps:
 
-1. Install Dependencies
+### 1. **Install Dependencies**
+
 First, install the required libraries:
 
-bash
-Copy
+```bash
 pip install torch torchvision torchaudio
 pip install ultralytics
-2. Train YOLOv8 Model
+```
+
+### 2. **Train YOLOv8 Model**
+
 Run the following Python code to train the YOLOv8 model on your custom dataset:
 
-python
-Copy
+```python
 from ultralytics import YOLO
 
 # Load the YOLOv8 model (using a pre-trained YOLOv8 model)
@@ -120,13 +102,15 @@ model.train(
     name='custom_yolov8',                   # Name for the training run
     pretrained=True,                        # Use pre-trained weights
 )
-This will start training the model, using the pre-trained YOLOv8 model and saving checkpoints every 10 epochs.
+```
 
-Resuming Training
-If your training session is interrupted and you want to resume training from the last saved checkpoint, use the following code:
+This will start training the model, using the **pre-trained YOLOv8 model** and saving checkpoints every 10 epochs.
 
-python
-Copy
+## Resuming Training
+
+If your training session is interrupted and you want to **resume training** from the last saved checkpoint, use the following code:
+
+```python
 from ultralytics import YOLO
 
 # Load the model from the last saved checkpoint (for example, epoch_30.pt)
@@ -144,13 +128,15 @@ model.train(
     name='custom_yolov8',                   # Name for the training run
     pretrained=False,                       # Continue from the last checkpoint
 )
-The model will resume training from the checkpoint (e.g., epoch_30.pt) and continue until the desired number of epochs is completed.
+```
 
-Downloading Model Checkpoints
-Model checkpoints will be saved during training. You can download the latest checkpoint (e.g., epoch_30.pt) by running the following code:
+The model will resume training from the checkpoint (e.g., `epoch_30.pt`) and continue until the desired number of epochs is completed.
 
-python
-Copy
+## Downloading Model Checkpoints
+
+Model checkpoints will be saved during training. You can download the latest checkpoint (e.g., `epoch_30.pt`) by running the following code:
+
+```python
 import shutil
 
 # Path to the model checkpoint
@@ -158,10 +144,16 @@ checkpoint_path = '/content/ultralytics/runs/train/custom_yolov8/weights/epoch_3
 
 # Move the checkpoint to a download-friendly location
 shutil.move(checkpoint_path, '/content/epoch_30.pt')
-After running the above code, you can download the .pt file using the Colab interface.
+```
 
-License
-This project is licensed under the MIT License. See the LICENSE file for more information.
+After running the above code, you can download the `.pt` file using the Colab interface.
 
-Conclusion
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+
+## Conclusion
+
 This repository provides a detailed dataset and configuration to train YOLOv8 models for indoor object detection. It supports resuming training from saved checkpoints, enabling users to continue training even after interruptions. Feel free to fork, use, and modify this dataset for your own custom object detection tasks.
+
+---
